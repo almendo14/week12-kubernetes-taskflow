@@ -28,7 +28,7 @@ spec:
           image: hashicorp/http-echo:latest
 
           args:
-            - "-text=Halo dari TaskFlow v1!"
+            - "-text=VERSI ERROR!"
             - "-listen=:8080"
 
           ports:

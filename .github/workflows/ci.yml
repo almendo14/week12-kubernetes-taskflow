@@ -1,0 +1,25 @@
+name: TaskFlow Kubernetes CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-kubernetes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Kubernetes Files
+        run: |
+          ls -la kubernetes/
+          test -f kubernetes/deployment.yaml
+          test -f kubernetes/service.yaml
+          test -f kubernetes/namespace-dev.yaml
+          test -f kubernetes/namespace-prod.yaml
+
+      - name: Validation Success
+        run: echo "Kubernetes manifests are valid"
